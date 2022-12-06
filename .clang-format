@@ -27,7 +27,10 @@
 ---
 Language: Cpp
 AccessModifierOffset: -2
-AlwaysBreakAfterReturnType: TopLevel
+BasedOnStyle: GNU
+AlignEscapedNewlinesLeft: true
+AlignOperands: Align
+AlwaysBreakAfterReturnType: TopLevelDefinitions
 BinPackArguments: true
 BinPackParameters: true
 BraceWrapping:
@@ -44,6 +47,7 @@ BraceWrapping:
   IndentBraces: true
   SplitEmptyFunction: false
 BreakBeforeBinaryOperators: All
+BreakBeforeBraces: GNU
 BreakBeforeBraces: Custom
 BreakBeforeTernaryOperators: true
 ColumnLimit: 80
@@ -65,6 +69,7 @@ ForEachMacros: [
 'FOR_COND',
 'FOR_EACH_AGGR_INIT_EXPR_ARG',
 'FOR_EACH_ALIAS',
+'FOR_EACH_ALIST_VALUE',
 'FOR_EACH_ALLOCNO',
 'FOR_EACH_ALLOCNO_OBJECT',
 'FOR_EACH_ARTIFICIAL_DEF',
@@ -103,6 +108,7 @@ ForEachMacros: [
 'FOR_EACH_INSN_INFO_MW',
 'FOR_EACH_INSN_INFO_USE',
 'FOR_EACH_INSN_USE',
+'FOR_EACH_LIVE_BUFFER',
 'FOR_EACH_LOCAL_DECL',
 'FOR_EACH_LOOP',
 'FOR_EACH_LOOP_FN',
@@ -123,6 +129,8 @@ ForEachMacros: [
 'FOR_EACH_SUCC',
 'FOR_EACH_SUCC_1',
 'FOR_EACH_SYMBOL',
+'FOR_EACH_TAIL',
+'FOR_EACH_TAIL_SAFE',
 'FOR_EACH_VARIABLE',
 'FOR_EACH_VEC_ELT',
 'FOR_EACH_VEC_ELT_FROM',
@@ -131,13 +139,26 @@ ForEachMacros: [
 'FOR_EACH_VEC_SAFE_ELT_REVERSE',
 'FOR_EXPR',
 'FOR_INIT_STMT',
-'FOR_SCOPE'
+'FOR_SCOPE',
+'ITREE_FOREACH'
 ]
+IncludeCategories:
+  - Regex: '^<config\.h>$'
+    Priority: -1
+  - Regex: '^<'
+    Priority: 1
+  - Regex: '^"lisp\.h"$'
+    Priority: 2
+  - Regex: '.*'
+    Priority: 3
 IndentCaseLabels: false
 NamespaceIndentation: None
 PenaltyBreakBeforeFirstCallParameter: 100
 PointerAlignment: Right
 SortIncludes: false
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+PenaltyBreakBeforeFirstCallParameter: 2000
 SpaceAfterCStyleCast: true
 SpaceBeforeParens: Always
 SpacesBeforeTrailingComments: 1
@@ -148,3 +169,12 @@ AllowShortFunctionsOnASingleLine: All
 AlwaysBreakTemplateDeclarations: MultiLine
 KeepEmptyLinesAtTheStartOfBlocks: false
 Standard: Auto
+WhitespaceSensitiveMacros:
+  - STR
+  - CALL1I
+  - CALL2I
+  - STR_VALUE
+
+# Local Variables:
+# mode: yaml
+# End:
